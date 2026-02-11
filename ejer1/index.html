@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen - Contador de Visitas</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; }
+        .card { border: 2px solid #007bff; padding: 20px; border-radius: 10px; text-align: center; }
+        #contador { font-size: 2rem; color: #007bff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Bienvenido</h1>
+        <p>Has visitado esta página:</p>
+        <div id="contador">0</div>
+        <p>veces</p>
+        <button onclick="location.reload()">Refrescar página para sumar</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

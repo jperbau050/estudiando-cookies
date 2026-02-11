@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Cookies JS</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .container { max-width: 400px; margin: auto; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+        input { width: 100%; padding: 8px; margin: 10px 0; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; cursor: pointer; background-color: #28a745; color: white; border: none; border-radius: 4px; }
+        button.secondary { background-color: #007bff; margin-top: 10px; }
+        #resultado { margin-top: 20px; font-weight: bold; color: #555; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Gestor de Cookies</h2>
+    <label for="nombre">Nombre de la Cookie:</label>
+    <input type="text" id="nombre" placeholder="ej. usuario">
+    
+    <label for="valor">Valor:</label>
+    <input type="text" id="valor" placeholder="ej. Juan Pérez">
+    
+    <button onclick="guardar()">Guardar Cookie</button>
+    <button class="secondary" onclick="consultar()">Consultar Cookie</button>
+    
+    <div id="resultado"></div>
+</div>
+
+<script>
+    // --- TUS FUNCIONES (Con correcciones leves) ---
+
+    function setCookie(cname, cvalor, exdays) {
+        let d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        // Corregido: punto en lugar de guion
+        let expires = "expires=" + d.toUTCString();
+
+        document.cookie = encodeURIComponent(cname) + "=" + encodeURIComponent(cvalor) + ";" + expires + "; path=/";
+        console.log("Cookie creada: " + cname);
+    }
+
+    function getCookie(cname) {
+        let name = encodeURIComponent(cname) + "=";
+        let cookies = document.cookie.split(';');
+        for (let c of cookies) {
+            c = c.trim();
+            if (c.indexOf(name) === 0) {
+                // Corregido: decode en lugar de encode para leer el valor real
+                return decodeURIComponent(c.substring(name.length));
+            }
+        }
+        return "";
+    }
+
+    // --- LÓGICA DE LA PÁGINA ---
+
+    function guardar() {
+        const nom = document.getElementById('nombre').value;
+        const val = document.getElementById('valor').value;
+        if(nom && val) {
+            setCookie(nom, val, 7);
+            document.getElementById('resultado').innerText = "¡Cookie '" + nom + "' guardada!";
+        } else {
+            alert("Rellena ambos campos");
+        }
+    }
+
+    function consultar() {
+        const nom = document.getElementById('nombre').value;
+        const contenido = getCookie(nom);
+        if (contenido) {
+            document.getElementById('resultado').innerText = "Valor encontrado: " + contenido;
+        } else {
+            document.getElementById('resultado').innerText = "La cookie no existe.";
+        }
+    }
+</script>
+
+</body>
+</html>

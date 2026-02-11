@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio LocalStorage Simple</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .caja {
+            border: 2px solid #333;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        button {
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="caja">
+        <h1>Configuración de Idioma</h1>
+        <select id="idiomaSelect">
+            <option value="Español">Español 🇪🇸</option>
+            <option value="Inglés">Inglés 🇬🇧</option>
+        </select>
+        <br><br>
+        <button onclick="guardar()">Guardar Idioma</button>
+        <button onclick="borrar()">Olvidar Idioma</button>
+
+        <h2 id="saludo">Hola!</h2>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
