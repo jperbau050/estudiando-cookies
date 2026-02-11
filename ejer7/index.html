@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio LocalStorage Simple</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .caja {
+            border: 2px solid #333;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        button {
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mis Notas Especiales</h1>
+
+        <input type="text" id="notaTexto" placeholder="Escribe tu nota...">
+        <select id="prioridadSelect">
+            <option value="normal">Normal</option>
+            <option value="urgente">Urgente ⚠️</option>
+        </select>
+
+        <button onclick="agregarNota()">Agregar Nota</button>
+        <button onclick="limpiarNotas()">Borrar Todo</button>
+
+        <ul id="listaNotas"></ul>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
